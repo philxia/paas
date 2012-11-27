@@ -370,7 +370,10 @@ Blockly.ExecutionSequence.controls_flow_statements = function(executionContext) 
 			throw 'There is no loop to break.';
 		for(var j=0; j<(seqLength-i); j++)
 		{
-			executionContext.blockSequence.pop(); // release the branch blocks.
+			var blocks = executionContext.blockSequence.pop(); // release the branch blocks.
+			for(var ii=0; ii<blocks.length; ++ii)
+				if(blocks[ii].isInitailize)
+					blocks[ii].isInitailize = false;
 			executionContext.historyOfExecutingMode.pop();
 			executionContext.historyIndexOfExecutingBlock.pop();
 		}
