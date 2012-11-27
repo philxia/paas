@@ -1,0 +1,11 @@
+.row
+  .six.columns.offset-by-three
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post}) do |f|
+      %fieldset
+        %legend= t('Forgot your password?')
+        = devise_error_messages!
+        = f.label :email
+        = f.email_field :email
+        = f.submit 'Send me reset password instructions'
+
+    = render 'devise/shared/links'

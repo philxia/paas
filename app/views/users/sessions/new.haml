@@ -1,0 +1,19 @@
+.row
+  .six.columns.offset-by-three
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      %fieldset
+        %legend= t('Sign in')
+        = f.label :email
+        = f.email_field :email
+        
+        = f.label :password
+        = f.password_field :password
+
+        - if devise_mapping.rememberable?
+          %label.checkbox
+            = f.check_box :remember_me
+            = t '.remember_me'
+
+        = f.submit 'Sign in'
+
+    = render 'devise/shared/links'

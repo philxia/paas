@@ -1,0 +1,4 @@
+.row
+  .six.columns
+    - if user_signed_in?
+      = link_to 'new blocky', index_path, :class => 'button'

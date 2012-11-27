@@ -1,0 +1,49 @@
+/**
+ * @author xiap
+ */
+
+
+/**
+ * The Revit model methods.
+ */
+
+function RevitModel()
+{}
+
+
+RevitModel.prototype = {
+	constructor: RevitModel
+}
+
+// set the value in the given row and column.
+RevitModel.prototype.setItem = function(rowIndex, columnIndex, value)
+{
+	$('#targetTable tr:eq('+rowIndex + ') td:nth-child(' + columnIndex + ')' ).html(value);
+}
+
+Table.prototype.addRow = function()
+{
+	var lastRowContent = $('#targetTable tr:last').html();
+	$('#targetTable tr:last').after('<tr>' + lastRowContent + '</tr>');
+}
+
+Table.prototype.addColumn = function()
+{
+	$("#targetTable tr").each(function(index){
+		var lastTD = $(this).children().last().html();
+		$(this).append('<td>' + lastTD + '</td>');	
+	});
+
+}
+
+var table = new Table();
+
+
+// jQuery: 
+$(document).ready(function(){
+	// initialize the table object.
+	table.TargetObject  = $('#targetTable');
+})
+
+
+
